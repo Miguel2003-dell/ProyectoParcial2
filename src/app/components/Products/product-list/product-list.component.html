@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let item of productList">
+            <p class="mb-0">Nombre: {{ item.name }}</p>
+            <p class="mb-0">Precio: {{ item.price }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
