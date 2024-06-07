@@ -14,7 +14,7 @@ export class ProductsService {
   //Conexion con la API de backend
   URL = 'http://localhost:5000/api/product';
 
-  getProducst(): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.URL);
   }
 

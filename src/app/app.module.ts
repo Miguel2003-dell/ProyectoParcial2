@@ -17,6 +17,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HomeComponent } from './components/Home/home.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
 import { ProductFormComponent } from './components/Products/product-form/product-form.component';
 import { ProductListComponent } from './components/Products/product-list/product-list.component';
 
@@ -41,7 +48,16 @@ import { ProductListComponent } from './components/Products/product-list/product
     MatSidenavModule,
     MatListModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    BrowserModule,
+    MatGridListModule,
+    FormsModule,
+    MatTabsModule,
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
