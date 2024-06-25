@@ -2,13 +2,20 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/Home/home.component';
 import { ProductListComponent } from './components/Products/product-list/product-list.component';
-import { ProductFormComponent } from './components/Products/product-form/product-form.component';
+import { UsuariosListComponent } from './components/Usuarios/usuarios-list/usuarios-list.component';
+import { LoginComponent } from './components/login/login/login.component';
+import { VentasComponent } from './components/Products/ventas/ventas.component';
+
+
+
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'ProductListComponent', component: ProductListComponent },
-  { path: 'ProductFormComponent', component: ProductFormComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'product-list', component: ProductListComponent },
+  { path: 'usuarios-list', component: UsuariosListComponent },
+  { path: 'ventas-list', component: VentasComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 

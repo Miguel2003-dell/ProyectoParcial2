@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,6 +26,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import { ProductFormComponent } from './components/Products/product-form/product-form.component';
 import { ProductListComponent } from './components/Products/product-list/product-list.component';
+import { ConfirmacionComponent } from './components/Products/confirmacion/confirmacion.component';
+
+
+import { UsuariosListComponent } from './components/Usuarios/usuarios-list/usuarios-list.component';
+import { UsuariosFormComponent } from './components/Usuarios/usuarios-form/usuarios-form.component';
+import { UsuariosConfirmacionComponent } from './components/Usuarios/usuarios-confirmacion/usuarios-confirmacion.component';
+import { LoginComponent } from './components/login/login/login.component';
+import { VentasComponent } from './components/Products/ventas/ventas.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +41,13 @@ import { ProductListComponent } from './components/Products/product-list/product
     MenubarComponent,
     HomeComponent,
     ProductFormComponent,
-    ProductListComponent
+    ProductListComponent,
+    ConfirmacionComponent,
+    UsuariosListComponent,
+    UsuariosFormComponent,
+    UsuariosConfirmacionComponent,
+    LoginComponent,
+    VentasComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +71,10 @@ import { ProductListComponent } from './components/Products/product-list/product
     MatInputModule,
     MatFormFieldModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

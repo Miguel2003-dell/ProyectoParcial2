@@ -1,9 +1,58 @@
-<h2 mat-dialog-title *ngIf="!data">Agregar Producto</h2>
-<h2 mat-dialog-title *ngIf="data">Editar Producto</h2>
-<mat-dialog-content>
-    <h1>Hola Mundo</h1>
-</mat-dialog-content>
-<mat-dialog-actions>
-    <button mat-raised-button>Guardar</button>
-    <button mat-raised-button color="warn" mat-dialog-close="true">Cancelar</button>
-</mat-dialog-actions>
+  <div>
+      <form [formGroup]="formGroup" class="example-form" (ngSubmit)="submit()">
+        <mat-form-field appearance="fill">
+          <p>Nombre:</p>
+          <input matInput formControlName="name">
+          <mat-error *ngIf="formGroup.get('name')?.hasError('required')">
+            Nombre es requerido
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <p>Código:</p>
+          <input matInput formControlName="code">
+          <mat-error *ngIf="formGroup.get('code')?.hasError('required')">
+            Código es requerido 
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <p>Categoría:</p>
+          <input matInput formControlName="category">
+          <mat-error *ngIf="formGroup.get('category')?.hasError('required')">
+            Categoría es requerida
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <p>Descripción:</p>
+          <input matInput formControlName="description">
+          <mat-error *ngIf="formGroup.get('description')?.hasError('required')">
+            Descripción es requerida
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <p>Precio:</p>
+          <input matInput formControlName="price" type="number">
+          <mat-error *ngIf="formGroup.get('price')?.hasError('required')">
+            Precio es requerido
+          </mat-error>
+          <mat-error *ngIf="formGroup.get('price')?.hasError('pattern')">
+            Precio debe ser un número válido
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <p>Monto:</p>
+          <input matInput formControlName="amount" type="number">
+          <mat-error *ngIf="formGroup.get('amount')?.hasError('required')">
+            Monto es requerido
+          </mat-error>
+          <mat-error *ngIf="formGroup.get('amount')?.hasError('pattern')">
+            Monto debe ser un número entero
+          </mat-error>
+        </mat-form-field>
+        <mat-dialog-actions>
+          <button mat-raised-button  [disabled]="formGroup.invalid">Guardar</button>
+          <button mat-raised-button color="warn" mat-dialog-close="true">Cancelar</button>
+        </mat-dialog-actions>
+
+      </form>
+    </div>
+    

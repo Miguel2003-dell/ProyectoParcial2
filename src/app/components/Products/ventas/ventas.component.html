@@ -1,0 +1,27 @@
+<div class="product-container">
+    <mat-form-field>
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Producto" #input>
+    </mat-form-field>
+    <button mat-fab (click)="openDialog()"><mat-icon>add</mat-icon></button>
+  
+    <div class="grid-container">
+      <div *ngFor="let product of filteredProductList" class="grid-item">
+        <p><strong>Nombre:</strong> {{ product.name }}</p>
+        <p><strong>Precio:</strong> {{ product.price | currency }}</p>
+        <p><strong>Cantidad:</strong> {{ product.amount }}</p>
+        <p><strong>Estatus:</strong> {{ product.status }}</p>
+        <button mat-raised-button color="primary" (click)="addToCart(product)">Agregar al Carrito</button>
+      </div>
+    </div>
+  
+    <h2>Carrito de Compras</h2>
+    <div class="cart-container">
+      <div *ngFor="let item of cart" class="cart-item">
+        <p><strong>Nombre:</strong> {{ item.name }}</p>
+        <p><strong>Precio:</strong> {{ item.price | currency }}</p>
+        <p><strong>Cantidad:</strong> {{ item.amount }}</p>
+      </div>
+    </div>
+  </div>
+  
