@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductsService } from '../../services/products/products.service';
+import { VentasService } from '../../services/ventas/ventas.service';
+import { Product } from 'src/app/model/product';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-ventas',
@@ -10,12 +13,21 @@ import { ProductsService } from '../../services/products/products.service';
 export class VentasComponent implements OnInit {
   productList: any[] = [];
   filteredProductList: any[] = [];
-  cart: any[] = [];
+  card: Product[] = [];
+  totalSum: number = 0;
 
-  constructor(public dialog: MatDialog, private productService: ProductsService) {}
+  constructor(
+    public dialog: MatDialog, 
+    private productService: ProductsService, 
+    private ventasService: VentasService
+  ) {}
 
   ngOnInit(): void {
     this.loadProducts();
+    this.ventasService.getProductSale().subscribe(products => {
+      this.card = products;
+      this.total();
+    });
   }
 
   loadProducts() {
@@ -36,16 +48,23 @@ export class VentasComponent implements OnInit {
     // Implementa la lógica para abrir un diálogo
   }
 
-  addToCart(product: any): void {
-    this.cart.push(product);
+  addToCart(product: Product){
+    this.ventasService.addProductSale(product);
     console.log('Producto agregado al carrito:', product);
+
   }
 
   editDialog(product: any): void {
     // Implementa la lógica para editar el producto
   }
 
-  deleteDialog(productId: any): void {
-    // Implementa la lógica para eliminar el producto
+  delete(product: Product){
+    this.ventasService.deleteProductSale(product._id);
+  }
+  total(){
+    this.ventasService.getProductSale()
+    .pipe(map(product=>{
+      return product.reduce((suma,variable)=>suma+variable.price,0)
+    })).subscribe(valor=>this.totalSum=valor)
   }
 }
